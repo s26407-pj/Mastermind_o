@@ -1,3 +1,5 @@
 public class Result {
-    boolean theEnd = false;
+    boolean theEnd;
+    int hitInPlace;
+    int hitNotInPlace;
 }

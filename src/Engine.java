@@ -6,8 +6,9 @@ public class Engine {
     int BOARD_SIZE = 4;
     int[] secretCode = new int[BOARD_SIZE];
     int[] gamerCode = new int[BOARD_SIZE];
+    int[] secretCodeState = new int[BOARD_SIZE];
+    int[] gamerCodeState = new int[BOARD_SIZE];
     int score;
-    boolean theEnd;
 
     public Engine() {
 
@@ -39,8 +40,6 @@ public class Engine {
     private void engine(Result r) {
 
         int win = 0;
-        int[] secretCodeState = new int[BOARD_SIZE];
-        int[] gamerCodeState = new int[BOARD_SIZE];
 
         for (int i = 0; i < BOARD_SIZE; i++) {
             if (secretCode[i] == gamerCode[i]) {
@@ -54,7 +53,7 @@ public class Engine {
         }
 
         if (win == BOARD_SIZE) {
-            theEnd = true;
+            r.theEnd = false;
         } else {
 
             for (int i = 0; i < BOARD_SIZE; i++) {
@@ -68,6 +67,23 @@ public class Engine {
                         }
                     }
                 }
+            }
+            r.theEnd = true;
+
+            hint(r);
+        }
+    }
+
+    private void hint(Result r) {
+
+        r.hitInPlace = 0;
+        r.hitNotInPlace = 0;
+
+        for (int i = 0; i < BOARD_SIZE; i++) {
+            if (gamerCodeState[i] == 2) {
+                r.hitInPlace++;
+            } else if (gamerCodeState[i] == 1) {
+                r.hitNotInPlace++;
             }
         }
     }

@@ -30,10 +30,10 @@ public class Drawer {
     public static void win() {
         System.out.println("Gratulacje! Udało Ci się odkryć sekretny kod!");
     }
-/*
-    public void hint(Rersult r) {
+
+    public void showhint(Result r) {
         System.out.println("Trafione na swoim miejscu: " + r.hitInPlace);
         System.out.println("Trafione nie na swoim miejscu: " + r.hitNotInPlace);
     }
-*/
+
 }
